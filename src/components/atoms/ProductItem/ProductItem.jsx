@@ -1,7 +1,7 @@
 import React from 'react';
 
 const ProductItem = ({ product }) => {
-  const { id, brand, model, price, imgUrl } = product;
+  const { brand, model, price, imgUrl } = product;
   return (
     <div>
       <img src={imgUrl} alt={model} />

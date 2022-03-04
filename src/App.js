@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { Switch, Router, BrowserRouter, Route } from 'react-router-dom';
+import { Switch, BrowserRouter, Route } from 'react-router-dom';
 
 import ProductLists from './components/organism/ProductLists/ProductLists';
 import ProductDetails from './components/organism/ProductDetails/ProductDetails';
@@ -14,7 +14,7 @@ function App() {
 
   const fetchProducts = async () => {
     setLoading(true);
-    await axios.get(url).then(res => {
+      axios.get(url).then(res => {
       setLoading(false);
       setProcuts(res.data);
       console.log(res.data)})
@@ -43,17 +43,6 @@ function App() {
         </Route>
       </Switch>
     </BrowserRouter>
-    
-    // <Router>
-    //  <div>
-    //    <Header />
-    //    <Routes>
-    //    <Route path="/" component={ProductLists} products={products}/>
-
-    //    {/* <Route path ="/:id" component={ProductDetails} /> */}
-    //    </Routes>
-    //  </div>
-    // </Router>
   );
 }
 

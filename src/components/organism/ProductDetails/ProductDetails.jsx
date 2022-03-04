@@ -1,10 +1,13 @@
 import React, {useState, useEffect} from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
+import { Header } from '../../molecules/Header';
+import { ProductDescr } from '../../atoms/ProductDescription/ProductDescr';
+import { ProductAction } from '../../atoms/ProductAction/ProductAction';
 
 const ProductDetails = () => {
   const { id } = useParams()
-  console.log(id);
+  
   const [loading, setLoading] = useState(true);
   const [product, setProduct] = useState({});
   
@@ -19,13 +22,32 @@ const ProductDetails = () => {
       console.log('error',error)});
     }
   
-    useEffect(() => {
-      fetchProduct()
-    }, []);  
+  useEffect(() => {
+    fetchProduct()
+  }, []);  
+
+  if (loading) {
+    return (
+      <h1>Loading...</h1>
+    )
+  }  
+
+  const {  model, imgUrl } = product;
+
   return(
     <div>
-      Product Details
+      <Header />
+      <div>
+        <div>
+          <img src={imgUrl} alt={model} />
+        </div>
+        <div>
+          <ProductDescr product={product} />
+          <ProductAction product={product} />
+        </div>
+      </div>
     </div>
+    
   )
 }
 

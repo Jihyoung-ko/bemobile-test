@@ -2,8 +2,8 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Switch, Router, BrowserRouter, Route } from 'react-router-dom';
 
-import ProductLists from './pages/ProductLists';
-import ProductDetails from './pages/ProductDetails';
+import ProductLists from './components/organism/ProductLists/ProductLists';
+import ProductDetails from './components/organism/ProductDetails/ProductDetails';
 
 const url = 'https://front-test-api.herokuapp.com/api/product';
 

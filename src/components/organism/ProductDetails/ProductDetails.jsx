@@ -4,6 +4,7 @@ import axios from 'axios';
 import { Header } from '../../molecules/Header';
 import { ProductDescr } from '../../atoms/ProductDescription/ProductDescr';
 import { ProductAction } from '../../atoms/ProductAction/ProductAction';
+import './ProductDetails.css';
 
 const ProductDetails = () => {
   const { id } = useParams()
@@ -37,14 +38,19 @@ const ProductDetails = () => {
   return(
     <div>
       <Header />
-      <div>
-        <div>
+      <div className='detailContainer'>
+        <div className='detailIamge'>
           <img src={imgUrl} alt={model} />
         </div>
-        <div>
+        <div className='detailText'>
+          <div className='detailDescr'>
           <ProductDescr product={product} />
-          <ProductAction product={product} />
         </div>
+        <div className='detailAction'>
+          <ProductAction product={product} />
+        </div>  
+        </div>
+        
       </div>
     </div>
     

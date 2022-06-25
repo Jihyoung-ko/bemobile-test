@@ -1,0 +1,15 @@
+.detailContainer {
+  padding: 100px;
+  display: flex;
+}
+
+.detailIamge {
+  margin-right: 50px;
+}
+
+@media(max-width: 600px) {
+  .detailContainer {
+    flex-direction: column;
+  }
+
+}

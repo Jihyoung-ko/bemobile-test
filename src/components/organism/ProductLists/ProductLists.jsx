@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import "./ProductLists.css";
 
 import {Header} from '../../molecules/Header'
 import SearchBar from '../../atoms/SearchBar/SearchBar';
@@ -18,9 +19,9 @@ const ProductLists = ({ products }) => {
   return (
     <div>
       <Header />
-      <div>
+      <div className='container'>
         <SearchBar onSearch={searchHandler} />
-        <div>
+        <div className='listContainer'>
           {filteredProducts?.map((product) => {
             return <Link to={`/${product.id}`} key={product.id}> <ProductItem product={product} /> </Link>
           })}

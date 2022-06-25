@@ -7,19 +7,19 @@ export const ProductDescr = ({ product }) => {
   return (
     <div>
       <h3>Details</h3>
-      <li>
-        <ul>Brand: {brand}</ul>
-        <ul>Model: {model}</ul>
-        <ul>Price: {price}€</ul>
-        <ul>CPU: {cpu}</ul>
-        <ul>RAM: {ram}</ul>
-        <ul>OS: {os}</ul>
-        <ul>Display Resolucion: {displayResolution}</ul>
-        <ul>Battery: {battery}</ul>
+      <div>
+        <p>Brand: {brand}</p>
+        <p>Model: {model}</p>
+        <p>Price: {price}€</p>
+        <p>CPU: {cpu}</p>
+        <p>RAM: {ram}</p>
+        <p>OS: {os}</p>
+        <p>Display Resolucion: {displayResolution}</p>
+        <p>Battery: {battery}</p>
         {/* <ul>Camaras: {primaryCamera[0]}, {primaryCamera[1]}</ul> */}
-        <ul>Dimentions: {dimentions}</ul>
-        <ul>Weight: {weight}g</ul>
-      </li>
+        <p>Dimentions: {dimentions}</p>
+        <p>Weight: {weight}g</p>
+      </div>
     </div>
   )
 }

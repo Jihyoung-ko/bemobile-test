@@ -1,0 +1,18 @@
+
+.listContainer {
+  margin-top: 30px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+}
+
+@media(max-width: 860px) {
+  .listContainer {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media(max-width: 600px) {
+  .listContainer {
+    grid-template-columns: 1fr;
+  }
+}

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Switch, BrowserRouter, Route } from 'react-router-dom';
+import './App.css';
 
 import ProductLists from './components/organism/ProductLists/ProductLists';
 import ProductDetails from './components/organism/ProductDetails/ProductDetails';

@@ -3,7 +3,11 @@ import './ProductAttribute.css'
 
 export const ProductAttribute = (props) => {
 
-  const {mainElement, selectAttribute, elementKey, selected} = props;
+  const {mainElement, selectAttribute, elementKey, selectedAttribute} = props;
 
-  return <div className={`container ${selected ? 'selected' : ''}`} onClick={(attribute) => selectAttribute(elementKey)}>{mainElement}</div>
+  return <div 
+    className={`product-attribute__container ${selectedAttribute === elementKey? 'selected' : ''}`} 
+    onClick={(attribute) => selectAttribute(elementKey)}>
+      {mainElement}
+    </div>
 }

@@ -5,6 +5,7 @@ import './App.css';
 
 import ProductLists from './components/organism/ProductLists/ProductLists';
 import ProductDetails from './components/organism/ProductDetails/ProductDetails';
+import { MainContext } from './AppContext';
 
 const url = 'https://front-test-api.herokuapp.com/api/product';
 
@@ -12,6 +13,7 @@ function App() {
 
   const [loading, setLoading] = useState(true);
   const [products, setProcuts] = useState([]);
+  const [cart, setCart] = useState([])
 
   const fetchProducts = async () => {
     setLoading(true);
@@ -34,16 +36,21 @@ function App() {
     )
   }
   return (
-    <BrowserRouter>
-      <Switch>
-        <Route exact path="/">
-          <ProductLists products={products} />
-        </Route>
-        <Route exact path="/:id">
-          <ProductDetails />
-        </Route>
-      </Switch>
-    </BrowserRouter>
+    <MainContext.Provider value={{
+      cart: cart,
+      setCart: setCart,
+    }}>
+      <BrowserRouter>
+        <Switch>
+          <Route exact path="/">
+            <ProductLists products={products} />
+          </Route>
+          <Route exact path="/:id">
+            <ProductDetails />
+          </Route>
+        </Switch>
+      </BrowserRouter>
+    </MainContext.Provider>
   );
 }
 

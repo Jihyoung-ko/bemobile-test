@@ -1,10 +1,13 @@
 import React from 'react';
+import { useMainState } from '../../../AppContext';
 import { ProductAttributes } from '../ProductAttributes/ProductAttributes';
 
 
 export const ProductAction = ({ product }) => {
   
   const { model, colors, internalMemory } = product;
+
+  const {cart, setCart} = useMainState();
 
   const createAttributes = (attributes) => {
     return attributes?.map(attribute => {
@@ -31,6 +34,8 @@ export const ProductAction = ({ product }) => {
       title: 'Memory'
     }
   ]
+
+  const addToCart = () => {}
   
   return (
     <div>
@@ -38,8 +43,7 @@ export const ProductAction = ({ product }) => {
         {productProperties.map(property => {
           return <ProductAttributes attributes={property.attributes} title={property.title} />
         })}
-      <button>Add to Cart</button>
-      
+      <button onClick={addToCart}>Add to Cart</button>
     </div>
   )
 }

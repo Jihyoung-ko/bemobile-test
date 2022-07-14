@@ -20,7 +20,7 @@ function App() {
       axios.get(url).then(res => {
       setLoading(false);
       setProcuts(res.data);
-      console.log(res.data)})
+    })
     .catch(error => {
       setLoading(false);
       console.log('error',error)});

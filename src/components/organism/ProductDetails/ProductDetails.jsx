@@ -17,7 +17,7 @@ const ProductDetails = () => {
     axios.get(`https://front-test-api.herokuapp.com/api/product/${id}`).then(res => {
       setLoading(false);
       setProduct(res.data);
-      console.log('res', res.data)})
+    })
       .catch(error => {
       setLoading(false);
       console.log('error',error)});

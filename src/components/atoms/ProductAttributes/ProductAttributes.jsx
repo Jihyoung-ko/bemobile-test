@@ -13,6 +13,8 @@ export const ProductAttributes = (props) => {
     setSelectedAttribute(attributes?.[0].elementKey)
   }, [attributes]);  
 
+  
+
   const selectAttribute = (attribute) => {
     setSelectedAttribute(attribute)
   }

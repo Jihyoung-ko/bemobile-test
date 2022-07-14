@@ -1,13 +1,29 @@
-import React from 'react';
+import { ConstructionOutlined } from '@mui/icons-material';
+import React, { useEffect, useState } from 'react';
 import { useMainState } from '../../../AppContext';
 import { ProductAttributes } from '../ProductAttributes/ProductAttributes';
 
 
 export const ProductAction = ({ product }) => {
   
-  const { model, colors, internalMemory } = product;
+  const { model, imgUrl, colors, internalMemory } = product;
 
   const {cart, setCart} = useMainState();
+
+  const [selectedProduct, setSelectedProduct] = useState({});
+
+  useEffect(() => {
+    setSelectedProduct({
+      'model': model, 
+      'img':imgUrl, 
+      'color': colors?.[0], 
+      'memory': internalMemory?.[0] 
+    })
+  },[model, imgUrl, colors, internalMemory])
+
+  useEffect(() => {
+    console.log(selectedProduct);
+  }, [selectedProduct])
 
   const createAttributes = (attributes) => {
     return attributes?.map(attribute => {
@@ -27,11 +43,13 @@ export const ProductAction = ({ product }) => {
   const productProperties = [
     {
       attributes: colorAttributes,
-      title: 'Color'
+      title: 'Color',
+      category: 'color'
     },
     {
       attributes: memoryAttributes,
-      title: 'Memory'
+      title: 'Memory',
+      category: 'memory'
     }
   ]
 
@@ -41,7 +59,7 @@ export const ProductAction = ({ product }) => {
     <div>
       <h3>Buy {model}</h3>
         {productProperties.map(property => {
-          return <ProductAttributes attributes={property.attributes} title={property.title} />
+          return <ProductAttributes attributes={property.attributes} title={property.title} category={property.category} selectedProduct={selectedProduct} setSelectedProduct={setSelectedProduct} />
         })}
       <button onClick={addToCart}>Add to Cart</button>
     </div>

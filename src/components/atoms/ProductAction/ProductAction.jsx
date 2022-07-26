@@ -21,17 +21,11 @@ export const ProductAction = ({ product }) => {
     })
   },[model, imgUrl, colors, internalMemory])
 
-  useEffect(() => {
-    console.log(selectedProduct);
-  }, [selectedProduct])
 
   const createAttributes = (attributes) => {
     return attributes?.map(attribute => {
       if(attribute){
-        return {
-          mainElement: attribute,
-          elementKey: attribute.toLowerCase()
-        }
+        return attribute
       }
     })
   }
@@ -53,13 +47,21 @@ export const ProductAction = ({ product }) => {
     }
   ]
 
-  const addToCart = () => {}
+  const addToCart = () => {
+    setCart([...cart, selectedProduct])
+  }
   
   return (
     <div>
       <h3>Buy {model}</h3>
         {productProperties.map(property => {
-          return <ProductAttributes attributes={property.attributes} title={property.title} category={property.category} selectedProduct={selectedProduct} setSelectedProduct={setSelectedProduct} />
+          return <ProductAttributes 
+            attributes={property.attributes} 
+            title={property.title} 
+            selectedProduct={selectedProduct}
+            category={property.category}
+            setSelectedProduct={setSelectedProduct}
+          />
         })}
       <button onClick={addToCart}>Add to Cart</button>
     </div>

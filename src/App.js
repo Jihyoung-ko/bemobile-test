@@ -30,6 +30,10 @@ function App() {
     fetchProducts()
   }, []);  
 
+  useEffect(() => {
+    console.log('you have', cart)
+  },[cart])
+
   if (loading) {
     return (
       <h1>Loading...</h1>

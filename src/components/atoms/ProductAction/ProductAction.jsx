@@ -6,7 +6,7 @@ import { ProductAttributes } from '../ProductAttributes/ProductAttributes';
 
 export const ProductAction = ({ product }) => {
   
-  const { model, imgUrl, colors, internalMemory } = product;
+  const { model, imgUrl, colors, internalMemory, brand, price } = product;
 
   const {cart, setCart} = useMainState();
 
@@ -14,8 +14,10 @@ export const ProductAction = ({ product }) => {
 
   useEffect(() => {
     setSelectedProduct({
-      'model': model, 
-      'img':imgUrl, 
+      brand,
+      price,
+      model, 
+      imgUrl, 
       'color': colors?.[0], 
       'memory': internalMemory?.[0] 
     })

@@ -6,6 +6,7 @@ import './App.css';
 import ProductLists from './components/organism/ProductLists/ProductLists';
 import ProductDetails from './components/organism/ProductDetails/ProductDetails';
 import { MainContext } from './AppContext';
+import { Cart } from './components/atoms/Cart/Cart';
 
 const url = 'https://front-test-api.herokuapp.com/api/product';
 
@@ -49,9 +50,13 @@ function App() {
           <Route exact path="/">
             <ProductLists products={products} />
           </Route>
+          <Route exact path="/cart">
+            <Cart />
+          </Route>
           <Route exact path="/:id">
             <ProductDetails />
           </Route>
+          
         </Switch>
       </BrowserRouter>
     </MainContext.Provider>

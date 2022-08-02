@@ -23,7 +23,9 @@ const ProductLists = ({ products }) => {
         <SearchBar onSearch={searchHandler} />
         <div className='listContainer'>
           {filteredProducts?.map((product) => {
-            return <Link to={`/${product.id}`} key={product.id}> <ProductItem product={product} /> </Link>
+            return <Link to={`/${product.id}`} key={product.id}> 
+                    <ProductItem product={product} />
+                   </Link>
           })}
         </div>
       </div>

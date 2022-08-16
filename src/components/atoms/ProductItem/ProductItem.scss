@@ -1,0 +1,27 @@
+.vertical {
+  .productCard{
+    text-align: center;
+    height: 350px;
+    margin-bottom: 10px;
+  }
+
+  img {
+    height: 200px;
+  }
+} 
+
+.horizontal {
+  .productCard{
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr 1fr 1fr;
+    height: 350px;
+    margin-bottom: 10px;
+    
+    img {
+      height: 100px;
+    }
+  }
+
+  
+}
+

@@ -1,8 +1,8 @@
 import React from 'react';
 
 export const ProductDescr = ({ product }) => {
-
-  const { brand, model, price, cpu, ram, os, displayResolution, battery, dimentions, weight, primaryCamera } = product;
+  const { brand, model, price, cpu, ram, os, displayResolution, battery, dimentions, weight } =
+    product;
 
   return (
     <div>
@@ -21,5 +21,5 @@ export const ProductDescr = ({ product }) => {
         <p>Weight: {weight}g</p>
       </div>
     </div>
-  )
-}
+  );
+};

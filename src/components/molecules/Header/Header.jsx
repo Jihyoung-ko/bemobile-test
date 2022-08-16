@@ -4,22 +4,23 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { useMainState } from '../../../AppContext';
 
-export const Header  = () => {
-
-
-  const {cart} = useMainState()
+export const Header = () => {
+  const { cart } = useMainState();
   return (
     <div>
-      <AppBar position='static' color='secondary'>
+      <AppBar position="static" color="secondary">
         <Toolbar>
-          <Typography variant='h4'>
-            BM market
+          <Typography variant="h4">
+            <Link to={`/`}> BM market </Link>
           </Typography>
-          <Badge badgeContent={1} color="error">
-            <Link to={`/cart`}> <ShoppingCart /> </Link>
+          <Badge badgeContent={cart.length} color="error">
+            <Link to={`/cart`}>
+              {' '}
+              <ShoppingCart />{' '}
+            </Link>
           </Badge>
         </Toolbar>
       </AppBar>
     </div>
-  )
-}
+  );
+};

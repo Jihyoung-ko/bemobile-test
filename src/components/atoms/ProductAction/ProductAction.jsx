@@ -1,36 +1,33 @@
-import { ConstructionOutlined } from '@mui/icons-material';
 import React, { useEffect, useState } from 'react';
 import { useMainState } from '../../../AppContext';
 import { ProductAttributes } from '../ProductAttributes/ProductAttributes';
 
-
 export const ProductAction = ({ product }) => {
-  
-  const { model, imgUrl, colors, internalMemory, brand, price } = product;
+  const { model, imgUrl, colors, internalMemory, brand, price, id } = product;
 
-  const {cart, setCart} = useMainState();
+  const { cart, setCart } = useMainState();
 
   const [selectedProduct, setSelectedProduct] = useState({});
 
   useEffect(() => {
     setSelectedProduct({
+      id,
       brand,
       price,
-      model, 
-      imgUrl, 
-      'color': colors?.[0], 
-      'memory': internalMemory?.[0] 
-    })
-  },[model, imgUrl, colors, internalMemory])
-
+      model,
+      imgUrl,
+      color: colors?.[0],
+      memory: internalMemory?.[0]
+    });
+  }, [model, imgUrl, colors, internalMemory]);
 
   const createAttributes = (attributes) => {
-    return attributes?.map(attribute => {
-      if(attribute){
-        return attribute
+    return attributes?.map((attribute) => {
+      if (attribute) {
+        return attribute;
       }
-    })
-  }
+    });
+  };
 
   const colorAttributes = createAttributes(colors);
 
@@ -47,25 +44,45 @@ export const ProductAction = ({ product }) => {
       title: 'Memory',
       category: 'memory'
     }
-  ]
+  ];
 
   const addToCart = () => {
-    setCart([...cart, selectedProduct])
-  }
-  
+    let productToAdd = { ...selectedProduct };
+
+    const existingProduct = cart.find((product) => product.id === productToAdd.id);
+
+    if (!existingProduct) {
+      setCart([...cart, { ...productToAdd, quantity: 1 }]);
+    } else {
+      const tempCart = cart.map((product) => {
+        if (product.id === productToAdd.id) {
+          return { ...product, quantity: product.quantity + 1 };
+        } else {
+          return product;
+        }
+      });
+
+      setCart(tempCart);
+    }
+  };
+
   return (
     <div>
       <h3>Buy {model}</h3>
-        {productProperties.map(property => {
-          return <ProductAttributes 
-            attributes={property.attributes} 
-            title={property.title} 
+      {productProperties.map((property) => {
+        const { title, attributes, category } = property;
+        return (
+          <ProductAttributes
+            key={title}
+            attributes={attributes}
+            title={title}
             selectedProduct={selectedProduct}
-            category={property.category}
+            category={category}
             setSelectedProduct={setSelectedProduct}
           />
-        })}
+        );
+      })}
       <button onClick={addToCart}>Add to Cart</button>
     </div>
-  )
-}
+  );
+};

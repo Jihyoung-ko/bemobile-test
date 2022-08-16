@@ -1,0 +1,9 @@
+.cart-container {
+  display: flex;
+  justify-content: center;
+}
+
+.cart-wrapper {
+  max-width: 1200px;
+  width: 100%;
+}

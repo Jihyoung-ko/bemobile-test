@@ -11,40 +11,47 @@ import { Cart } from './components/atoms/Cart/Cart';
 const url = 'https://front-test-api.herokuapp.com/api/product';
 
 function App() {
-
   const [loading, setLoading] = useState(true);
   const [products, setProcuts] = useState([]);
-  const [cart, setCart] = useState([])
+  const [cart, setCart] = useState([]);
 
   const fetchProducts = async () => {
     setLoading(true);
-      axios.get(url).then(res => {
-      setLoading(false);
-      setProcuts(res.data);
-    })
-    .catch(error => {
-      setLoading(false);
-      console.log('error',error)});
-  }
+    axios
+      .get(url)
+      .then((res) => {
+        setLoading(false);
+        setProcuts(res.data);
+      })
+      .catch((error) => {
+        setLoading(false);
+        console.log('error', error);
+      });
+  };
 
   useEffect(() => {
-    fetchProducts()
-  }, []);  
+    fetchProducts();
+
+    const storedCart = JSON.parse(localStorage.getItem('cart'));
+    if (storedCart) {
+      setCart(storedCart);
+    }
+  }, []);
 
   useEffect(() => {
-    console.log('you have', cart)
-  },[cart])
+    console.log('you have', cart);
+    localStorage.setItem('cart', JSON.stringify(cart));
+  }, [cart]);
 
   if (loading) {
-    return (
-      <h1>Loading...</h1>
-    )
+    return <h1>Loading...</h1>;
   }
   return (
-    <MainContext.Provider value={{
-      cart: cart,
-      setCart: setCart,
-    }}>
+    <MainContext.Provider
+      value={{
+        cart: cart,
+        setCart: setCart
+      }}>
       <BrowserRouter>
         <Switch>
           <Route exact path="/">
@@ -56,7 +63,6 @@ function App() {
           <Route exact path="/:id">
             <ProductDetails />
           </Route>
-          
         </Switch>
       </BrowserRouter>
     </MainContext.Provider>

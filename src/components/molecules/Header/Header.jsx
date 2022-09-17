@@ -6,6 +6,12 @@ import { useMainState } from '../../../AppContext';
 
 export const Header = () => {
   const { cart } = useMainState();
+
+  const totalQuantity = cart.reduce(
+    (accumulator, nextValue) => accumulator + nextValue.quantity,
+    0
+  );
+
   return (
     <div>
       <AppBar position="static" color="secondary">
@@ -13,7 +19,7 @@ export const Header = () => {
           <Typography variant="h4">
             <Link to={`/`}> BM market </Link>
           </Typography>
-          <Badge badgeContent={cart.length} color="error">
+          <Badge badgeContent={totalQuantity} color="error">
             <Link to={`/cart`}>
               {' '}
               <ShoppingCart />{' '}

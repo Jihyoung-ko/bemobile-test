@@ -39,7 +39,6 @@ function App() {
   }, []);
 
   useEffect(() => {
-    console.log('you have', cart);
     localStorage.setItem('cart', JSON.stringify(cart));
   }, [cart]);
 

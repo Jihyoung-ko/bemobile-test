@@ -1,13 +1,13 @@
 import React from 'react';
 import { useMainState } from '../../../AppContext';
 import { Header } from '../../molecules/Header';
+import { CartItemQauntity } from '../CartItemQuantity/CartItemQuantity';
 import ProductItem from '../ProductItem/ProductItem';
+
 import './Cart.css';
 
 export const Cart = () => {
   const { cart } = useMainState();
-
-  console.log(cart);
 
   return (
     <div>
@@ -22,7 +22,7 @@ export const Cart = () => {
               return (
                 <div key={cartItem.id}>
                   <ProductItem product={cartItem} key={cartItem.id} cardType="horizontal" />
-                  <p>{cartItem.quantity}</p>
+                  <CartItemQauntity cartItem={cartItem} />
                 </div>
               );
             })}

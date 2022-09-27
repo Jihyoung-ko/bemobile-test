@@ -1,0 +1,6 @@
+.cart-quantity {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  max-height: 100px;
+}

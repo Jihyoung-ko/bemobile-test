@@ -17,7 +17,7 @@ const ProductItem = (props) => {
           </div>
           {color ? <h4>{color}</h4> : <p></p>}
           {memory ? <h4>{memory}</h4> : <p></p>}
-          {price ? <p>{price}€</p> : <p>No disponible</p>}
+          {price ? <h4>{price}€</h4> : <p>No disponible</p>}
         </div>
       </div>
     </Link>

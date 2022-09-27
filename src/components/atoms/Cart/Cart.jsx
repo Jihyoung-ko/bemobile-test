@@ -20,7 +20,7 @@ export const Cart = () => {
           <div>
             {cart?.map((cartItem) => {
               return (
-                <div key={cartItem.id}>
+                <div key={cartItem.id} className="cart-item">
                   <ProductItem product={cartItem} key={cartItem.id} cardType="horizontal" />
                   <CartItemQauntity cartItem={cartItem} />
                 </div>

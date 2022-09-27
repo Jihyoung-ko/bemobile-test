@@ -49,10 +49,20 @@ export const ProductAction = ({ product }) => {
   const addToCart = () => {
     let productToAdd = { ...selectedProduct };
 
-    const existingProduct = cart.find((product) => product.id === productToAdd.id);
+    const productToAddCartId =
+      `${productToAdd.id} ${productToAdd.color} ${productToAdd.memory} `.replace(/\s/g, '');
+
+    const existingProduct = cart.find((product) => product.cartId === productToAddCartId);
 
     if (!existingProduct) {
-      setCart([...cart, { ...productToAdd, quantity: 1 }]);
+      setCart([
+        ...cart,
+        {
+          ...productToAdd,
+          quantity: 1,
+          cartId: productToAddCartId
+        }
+      ]);
     } else {
       const tempCart = cart.map((product) => {
         if (product.id === productToAdd.id) {
